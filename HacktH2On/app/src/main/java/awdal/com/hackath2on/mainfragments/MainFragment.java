@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import awdal.com.hackath2on.R;
+
 public class MainFragment extends Fragment {
 
     public static MainFragment newInstance() {
