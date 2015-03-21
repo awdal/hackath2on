@@ -1,0 +1,82 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="awdal.com.hackath2on.otherfragments.CounterFragment"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/counterlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <awdal.com.hackath2on.customviews.CustomTextViewRegular
+            android:id="@+id/llitres_crono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+
+            android:text="1752"
+            android:textSize="35dp"
+            android:textColor="@color/verd"/>
+        <awdal.com.hackath2on.customviews.CustomTextViewRegular
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/llitres_crono"
+            android:layout_alignBaseline="@+id/llitres_crono"
+            android:text="L"
+            android:textSize="20dp"
+            android:textColor="@color/verd"/>
+
+        <awdal.com.hackath2on.customviews.CustomTextViewRegular
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:text="2:34:41"
+            android:textSize="35dp"
+            android:textColor="@color/verd"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <awdal.com.hackath2on.customviews.CustomTextViewRegular
+            android:id="@+id/day_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:text="day"
+            android:textSize="30dp"
+            android:textColor="@color/blau"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@android:drawable/ic_menu_mylocation"/>
+
+        <awdal.com.hackath2on.customviews.CustomTextViewRegular
+            android:id="@+id/min_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="min"
+            android:textSize="30dp"
+            android:textColor="@color/blau"/>
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>
