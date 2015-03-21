@@ -11,6 +11,8 @@ import android.widget.TextView;
 import awdal.com.hackath2on.R;
 import awdal.com.hackath2on.otherfragments.CounterFragment;
 
+import awdal.com.hackath2on.R;
+
 public class MainFragment extends Fragment {
 
     public static MainFragment newInstance() {

@@ -1,25 +1,37 @@
 package awdal.com.hackath2on;
 
-import java.util.Locale;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.support.v13.app.FragmentPagerAdapter;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.util.Locale;
 
 import awdal.com.hackath2on.mainfragments.AutomatismFragment;
 import awdal.com.hackath2on.mainfragments.MainFragment;
 
 
-public class MainActivity extends Activity {
 
+public class MainActivity extends Activity implements MyInterface{
+    private final static int REQUEST_ENABLE_BT = 1;
+
+    private BluetoothAdapter mBluetoothAdapter;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -52,6 +64,8 @@ public class MainActivity extends Activity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(0);
 
+        //initBluetooth();
+        notification("test","Title");
     }
 
 
@@ -153,6 +167,85 @@ public class MainActivity extends Activity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
+    }
+    //BLUETOOTH STUFF
+
+    private void initBluetooth(){
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        switch (this.enable()){
+            case Constants.ENABLED:
+                Toast.makeText(getApplicationContext(), "bluetooth is enabled", Toast.LENGTH_LONG).show();
+                //show("bluetooth is enabled");
+
+                AcceptThread th =  new AcceptThread(mBluetoothAdapter,this);
+                th.start();
+
+                break;
+
+            case Constants.DISABLED:
+                show("bluetooth is disabled");
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+                onDestroy();
+                break;
+            case Constants.NOT_SUPORTED:
+                Toast.makeText(getApplicationContext(),"bluetooth not supported", Toast.LENGTH_LONG).show();
+                onDestroy();
+                break;
+        }
+
+    }
+
+
+
+
+    public int enable(){
+
+        if (mBluetoothAdapter != null) {
+            // Device does support Bluetooth
+            if (mBluetoothAdapter.isEnabled()) {
+                // Enabled. Work with Bluetooth.
+                return Constants.ENABLED;
+            }
+            else
+            {
+                // Disabled.
+
+                return Constants.DISABLED;
+
+            }
+        }else{
+            return Constants.NOT_SUPORTED;
+        }
+    }
+
+
+
+    private void show(String text){
+        Toast.makeText(getApplicationContext(),text, Toast.LENGTH_LONG).show();
+    }
+    public void showMessageObtained(String text){
+
+
+
+        //show("text rebut en el seguent toast");
+        Log.e("connectat", text);
+        //show(text);
+    }
+    private void notification(String text,String title){
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.rsz_generic_water)
+                        .setContentTitle(title)
+                        .setContentText(text);
+        // Sets an ID for the notification
+        int mNotificationId = 001;
+// Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+// Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+
     }
 
 }
