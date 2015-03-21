@@ -3,10 +3,15 @@ package awdal.com.hackath2on;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -59,6 +64,8 @@ public class MainActivity extends Activity implements MyInterface{
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(0);
 
+        //initBluetooth();
+        notification("test","Title");
     }
 
 
@@ -218,9 +225,27 @@ public class MainActivity extends Activity implements MyInterface{
         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_LONG).show();
     }
     public void showMessageObtained(String text){
+
+
+
         //show("text rebut en el seguent toast");
         Log.e("connectat", text);
         //show(text);
+    }
+    private void notification(String text,String title){
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.rsz_generic_water)
+                        .setContentTitle(title)
+                        .setContentText(text);
+        // Sets an ID for the notification
+        int mNotificationId = 001;
+// Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+// Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+
     }
 
 }
