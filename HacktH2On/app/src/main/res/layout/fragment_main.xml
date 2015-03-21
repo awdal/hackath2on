@@ -1,0 +1,73 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity$PlaceholderFragment">
+
+    <awdal.com.hackath2on.customviews.CustomTextView
+        android:id="@+id/litres_minut"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="150dp"
+        android:textColor="@color/blau"
+        android:text="28.3"/>
+
+    <awdal.com.hackath2on.customviews.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/litres_minut"
+        android:layout_marginTop="-60dp"
+        android:paddingRight="20dp"
+        android:textSize="20dp"
+        android:textColor="@android:color/darker_gray"
+        android:text="L/min"/>
+
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_margin="1dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/litres_minut"
+        card_view:cardCornerRadius="1dp">
+
+        <awdal.com.hackath2on.customviews.CustomTextViewRegular
+            android:id="@+id/llitres_crono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+
+            android:text="1752"
+            android:textSize="35dp"
+            android:textColor="@color/verd"/>
+        <awdal.com.hackath2on.customviews.CustomTextViewRegular
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+
+
+
+            android:text="L"
+            android:textSize="20dp"
+            android:textColor="@color/verd"/>
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+</RelativeLayout>
