@@ -21,6 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+
+import java.io.Serializable;
 import java.util.Locale;
 
 import awdal.com.hackath2on.mainfragments.AutomatismFragment;
@@ -28,9 +30,13 @@ import awdal.com.hackath2on.mainfragments.MainFragment;
 
 
 
-public class MainActivity extends Activity implements MyInterface{
+public class MainActivity extends Activity implements MyInterface,Serializable{
     private final static int REQUEST_ENABLE_BT = 1;
-
+    private float aixeta1 = 99.9f;
+    private float aixeta2 = 0;
+    private float dutxa = 0;
+    private float general = 0;
+    private int selected = 0;
     private BluetoothAdapter mBluetoothAdapter;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -64,8 +70,8 @@ public class MainActivity extends Activity implements MyInterface{
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(0);
 
-        //initBluetooth();
-        notification("test","Title");
+        initBluetooth();
+        notification("test","Title");//temporal
     }
 
 
@@ -91,21 +97,39 @@ public class MainActivity extends Activity implements MyInterface{
         return super.onOptionsItemSelected(item);
     }
 
+    public float getConsumActual() {
+        switch (selected){
+            case Constants.AIXETA1:
+                return aixeta1;
+            case Constants.AIXETA2:
+                return aixeta2;
+            case Constants.DUTXA:
+                return dutxa;
+            case Constants.GENERAL:
+                return general;
+        }
+        return -1;
+    }
+
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        MainFragment m = MainFragment.newInstance();
+
+
 
         Fragment[] fragments = new Fragment[] {
                 //SocialFragment.newInstance(),
-                MainFragment.newInstance(),
+                m,
                 AutomatismFragment.newInstance()
         };
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+            m.setMainActivity(MainActivity.this);
         }
 
         @Override
@@ -225,11 +249,21 @@ public class MainActivity extends Activity implements MyInterface{
         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_LONG).show();
     }
     public void showMessageObtained(String text){
+        if(text.charAt(0) == '/'){//valor actual consum
+            //2 aixetes,1 dutxa i 1general en aquest ordre, per exemple: /10.3,99.0,55.2,45.4
+            String []split = text.substring(1).split(",");
+            aixeta1 = Float.parseFloat(split[0]);
+            aixeta2 = Float.parseFloat(split[1]);
+            dutxa  = Float.parseFloat(split[2]);
+            general = Float.parseFloat(split[3]);
+            Log.e("connectat", text);
 
+
+        }
 
 
         //show("text rebut en el seguent toast");
-        Log.e("connectat", text);
+
         //show(text);
     }
     private void notification(String text,String title){
@@ -247,5 +281,7 @@ public class MainActivity extends Activity implements MyInterface{
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
 
     }
+
+
 
 }

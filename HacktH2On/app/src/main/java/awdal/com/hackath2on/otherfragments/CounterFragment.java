@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,14 +22,17 @@ import awdal.com.hackath2on.R;
 public class CounterFragment extends Fragment {
 
 
+    private LiterCounterInteface listener;
+
     public interface LiterCounterInteface {
         public float getLiterPerMinut();
     }
 
     private RelativeLayout counterLayout;
     private int count;
+    private float count_liter;
     private Timer T;
-    private TextView counterView1, counterView2;
+    private TextView counterView1, counterView2, litercounter;
     private boolean isRunning;
 
     public static CounterFragment newInstance(String param1, String param2) {
@@ -54,6 +59,7 @@ public class CounterFragment extends Fragment {
         counterLayout = (RelativeLayout) v.findViewById(R.id.counterlayout);
         counterView1 = (TextView) v.findViewById(R.id.counterview1);
         counterView2 = (TextView) v.findViewById(R.id.counterview2);
+        litercounter = (TextView) v.findViewById(R.id.llitres_crono);
 
         counterLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,12 +69,17 @@ public class CounterFragment extends Fragment {
 
                 //TODO: Register
                 count = 0;
+                count_liter = 0;
                 counterLayout.setVisibility(View.GONE);
             }
         });
         return v;
     }
 
+
+    public void setCounterListener(LiterCounterInteface listener) {
+        this.listener = listener;
+    }
 
     private String[] secondsToString(int pTime) {
         final int hour = pTime/3600;
@@ -100,6 +111,13 @@ public class CounterFragment extends Fragment {
                         counterView1.setText(String.format("%s:%s",time[0], time[1]));
                         counterView2.setText(String.format("%s",time[2]));
                         count++;
+
+                        DecimalFormat df = new DecimalFormat("#0.0");
+                        DecimalFormatSymbols dfs = df.getDecimalFormatSymbols();
+                        dfs.setDecimalSeparator('.');
+                        df.setDecimalFormatSymbols(dfs);
+                        litercounter.setText(df.format(count_liter));
+                        count_liter += listener.getLiterPerMinut()/60.f;
                     }
                 });
             }
@@ -111,9 +129,17 @@ public class CounterFragment extends Fragment {
                 T.cancel();
             T=new Timer();
             count = 0;
+            count_liter = 0;
             String[] time = secondsToString(count);
             counterView1.setText(String.format("%s:%s",time[0], time[1]));
             counterView2.setText(String.format("%s",time[2]));
+
+            DecimalFormat df = new DecimalFormat("#0.0");
+            DecimalFormatSymbols dfs = df.getDecimalFormatSymbols();
+            dfs.setDecimalSeparator('.');
+            df.setDecimalFormatSymbols(dfs);
+            litercounter.setText(df.format(count_liter));
+
             isRunning = true;
             T.scheduleAtFixedRate(task, 0, 1000);
         } else {

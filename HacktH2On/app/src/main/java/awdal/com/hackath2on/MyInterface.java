@@ -5,4 +5,5 @@ package awdal.com.hackath2on;
  */
 public interface MyInterface {
     public void showMessageObtained(String text);
+    public float getConsumActual();
 }
