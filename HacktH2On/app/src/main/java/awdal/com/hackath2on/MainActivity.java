@@ -83,6 +83,10 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
         generalF = (FloatingActionButton) findViewById(R.id.general);
         final int selectedColor = getResources().getColor(R.color.selected);
         final int defaultColor = getResources().getColor(R.color.verd);
+        generalF.setColorNormal(selectedColor);
+        aixeta2F.setColorNormal(defaultColor);
+        dutxaF.setColorNormal(defaultColor);
+        aixeta1F.setColorNormal(defaultColor);
         aixeta1F.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
