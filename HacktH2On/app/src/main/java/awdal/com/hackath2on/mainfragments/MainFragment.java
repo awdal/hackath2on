@@ -13,7 +13,7 @@ import awdal.com.hackath2on.otherfragments.CounterFragment;
 
 import awdal.com.hackath2on.R;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements CounterFragment.LiterCounterInteface{
 
     public static MainFragment newInstance() {
         MainFragment fragment = new MainFragment();
@@ -50,5 +50,10 @@ public class MainFragment extends Fragment {
         });
 
         return v;
+    }
+
+    @Override
+    public float getLiterPerMinut() {
+        return 0;
     }
 }

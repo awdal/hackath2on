@@ -31,52 +31,27 @@
             android:textSize="20dp"
             android:textColor="@color/verd"/>
 
+
         <awdal.com.hackath2on.customviews.CustomTextViewRegular
+            android:id="@+id/counterview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/counterview2"
+
+            android:layout_centerVertical="true"
+            android:textSize="35dp"
+            android:textColor="@color/verd"/>
+
+        <awdal.com.hackath2on.customviews.CustomTextViewRegular
+            android:id="@+id/counterview2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:layout_alignBaseline="@+id/counterview1"
             android:layout_marginRight="15dp"
-            android:text="2:34:41"
-            android:textSize="35dp"
+            android:textSize="20dp"
             android:textColor="@color/verd"/>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <awdal.com.hackath2on.customviews.CustomTextViewRegular
-            android:id="@+id/day_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="15dp"
-            android:layout_centerVertical="true"
-            android:text="day"
-            android:textSize="30dp"
-            android:textColor="@color/blau"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@android:drawable/ic_menu_mylocation"/>
-
-        <awdal.com.hackath2on.customviews.CustomTextViewRegular
-            android:id="@+id/min_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="15dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="min"
-            android:textSize="30dp"
-            android:textColor="@color/blau"/>
-
-
-
-    </RelativeLayout>
 
 </LinearLayout>
