@@ -3,29 +3,35 @@ package awdal.com.hackath2on.mainfragments;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import awdal.com.hackath2on.MainActivity;
 import awdal.com.hackath2on.R;
 import awdal.com.hackath2on.otherfragments.CounterFragment;
 
-import awdal.com.hackath2on.R;
-
 public class MainFragment extends Fragment {
+    private MainActivity mActivity;
 
     public static MainFragment newInstance() {
         MainFragment fragment = new MainFragment();
         /*Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+
+        args.putSerializable("MainActivity", m);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);*/
         return fragment;
     }
 
+    public void setMainActivity(MainActivity ma){
+        mActivity = ma;
+    }
     public MainFragment() {
         // Required empty public constructor
+
     }
 
     @Override
@@ -48,6 +54,10 @@ public class MainFragment extends Fragment {
                 f.startOrStopCounter();
             }
         });
+        if (mActivity != null)
+            cl.setText(mActivity.getConsumActual() + "");
+        else
+            Log.e("connectat", "interficie nula");
 
         return v;
     }

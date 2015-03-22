@@ -19,7 +19,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="150dp"
         android:textColor="@color/blau"
-        android:text="28.3"/>
+        android:text="0"/>
 
     <awdal.com.hackath2on.customviews.CustomTextView
         android:layout_width="wrap_content"
