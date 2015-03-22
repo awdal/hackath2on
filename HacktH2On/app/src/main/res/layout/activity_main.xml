@@ -31,7 +31,8 @@
             fab:fab_colorNormal="@color/verd"
             fab:fab_colorPressed="@color/ligth_green"
             fab:fab_size="mini"
-            fab:fab_icon="@drawable/add"/>
+            fab:fab_icon="@drawable/add"
+            android:id="@+id/mes"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
@@ -39,7 +40,8 @@
             fab:fab_icon="@drawable/tap"
             fab:fab_colorNormal="@color/verd"
             fab:fab_size="mini"
-            fab:fab_colorPressed="@color/ligth_green"/>
+            fab:fab_colorPressed="@color/ligth_green"
+            android:id="@+id/aixeta1"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
@@ -47,7 +49,8 @@
             fab:fab_colorNormal="@color/verd"
             fab:fab_colorPressed="@color/ligth_green"
             fab:fab_size="mini"
-            fab:fab_icon="@drawable/kitchentap"/>
+            fab:fab_icon="@drawable/kitchentap"
+            android:id="@+id/aixeta2"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
@@ -55,7 +58,8 @@
             fab:fab_icon="@drawable/shower"
             fab:fab_colorNormal="@color/verd"
             fab:fab_size="mini"
-            fab:fab_colorPressed="@color/ligth_green"/>
+            fab:fab_colorPressed="@color/ligth_green"
+            android:id="@+id/dutxa"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
@@ -63,7 +67,8 @@
             fab:fab_colorNormal="@color/verd"
             fab:fab_colorPressed="@color/ligth_green"
             fab:fab_size="mini"
-            fab:fab_icon="@drawable/all"/>
+            fab:fab_icon="@drawable/all"
+            android:id="@+id/general"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/button_gone"
@@ -72,7 +77,8 @@
             fab:fab_icon="@drawable/settings"
             fab:fab_colorNormal="@color/verd"
             fab:fab_size="mini"
-            fab:fab_colorPressed="@color/ligth_green"/>
+            fab:fab_colorPressed="@color/ligth_green"
+            />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

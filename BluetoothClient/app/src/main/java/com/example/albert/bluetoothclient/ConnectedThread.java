@@ -48,9 +48,9 @@ public class ConnectedThread extends Thread {
     }*/
 
     /* Call this from the main activity to send data to the remote device */
-    public void write(byte[] bytes, int len) {
+    public void write(byte[] bytes) {
         try {
-            mmOutStream.write(bytes, 0, len);
+            mmOutStream.write(bytes);
         } catch (IOException e) { }
     }
 

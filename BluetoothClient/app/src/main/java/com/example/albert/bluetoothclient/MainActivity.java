@@ -12,8 +12,6 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -50,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
                 Log.e("connectat", "cop:" + i);
                 if (sender != null) {
                     String text = inputtext.getText().toString();
-                    sender.write(text.getBytes(), 20);
+                    sender.write(text.getBytes());
                 } else {
                     Log.e("connectat", "th es null");
                     show("ERROR");
@@ -130,7 +128,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
         Timer timer = new Timer();
-        timer.schedule(send(), 0, 500);
+        timer.schedule(send(), 0, 1000);
 
 
     }
@@ -140,19 +138,16 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void run() {
                 if (sender != null) {
+                    final String text = "/"+aixeta1+","+aixeta2+","+dutxa+","+general;
+                    Log.e("connectat","envio:"+text);
+                    /*runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+                        }
+                    });*/
 
-                    DecimalFormat df = new DecimalFormat("00.0");
-                    DecimalFormatSymbols dfs = df.getDecimalFormatSymbols();
-                    dfs.setDecimalSeparator('.');
-                    df.setDecimalFormatSymbols(dfs);
-                    String a1 = df.format(aixeta1);
-                    String a2 = df.format(aixeta2);
-                    String dtx = df.format(dutxa);
-                    String gen = df.format(general);
-
-                    final String text = "/"+a1+","+a2+","+dtx+","+gen;
-                    Log.e("connectat", "envio:" + text);
-                    sender.write(text.getBytes(),text.length());
+                    sender.write(text.getBytes());
                 }
             }
         };

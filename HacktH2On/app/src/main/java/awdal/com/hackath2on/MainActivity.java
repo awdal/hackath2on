@@ -22,6 +22,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+
 import java.io.Serializable;
 import java.util.Locale;
 
@@ -39,6 +41,10 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
     private int selected = 3;
     private BluetoothAdapter mBluetoothAdapter;
     private MainFragment m;
+    private FloatingActionButton aixeta1F;
+    private FloatingActionButton aixeta2F;
+    private FloatingActionButton dutxaF;
+    private FloatingActionButton generalF;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -71,8 +77,38 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(0);
 
+        aixeta1F = (FloatingActionButton) findViewById(R.id.aixeta1);
+        aixeta2F = (FloatingActionButton) findViewById(R.id.aixeta2);
+        dutxaF = (FloatingActionButton) findViewById(R.id.dutxa);
+        generalF = (FloatingActionButton) findViewById(R.id.general);
+
+        aixeta1F.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected = Constants.AIXETA1;
+            }
+        });
+        aixeta2F.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected = Constants.AIXETA2;
+            }
+        });
+        dutxaF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected = Constants.DUTXA;
+            }
+        });
+        generalF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selected = Constants.GENERAL;
+            }
+        });
+
         initBluetooth();
-        notification("test","Title");//temporal
+
     }
 
 
@@ -279,6 +315,8 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
                 });
             }
 
+        }else{
+            notification(text,"Notification");//temporal
         }
 
 
@@ -300,6 +338,9 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
 // Builds the notification and issues it.
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
 
+    }
+    public int getSelected(){
+        return selected;
     }
 
 

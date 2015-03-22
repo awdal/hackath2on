@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,6 +15,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 
+import awdal.com.hackath2on.Constants;
 import awdal.com.hackath2on.MainActivity;
 import awdal.com.hackath2on.R;
 import awdal.com.hackath2on.otherfragments.CounterFragment;
@@ -36,6 +36,10 @@ public class MainFragment extends Fragment implements CounterFragment.LiterCount
 
     private XYMultipleSeriesDataset dataset;
     private XYMultipleSeriesRenderer mRenderer;
+    private ArrayList<Double> seriesListAixeta1;
+    private ArrayList<Double> seriesListAixeta2;
+    private ArrayList<Double> seriesListDutxa;
+    private ArrayList<Double> seriesListGeneral;
     private ArrayList<Double> seriesList;
     private XYSeries series;
 
@@ -99,23 +103,29 @@ public class MainFragment extends Fragment implements CounterFragment.LiterCount
 
 
     private void initChart(){
-        series = new XYSeries("Consum d'aigua");
-        seriesList = new ArrayList();
+        series = new XYSeries("");
+        seriesListAixeta1 = new ArrayList();
+        seriesListAixeta2 = new ArrayList();
+        seriesListDutxa = new ArrayList();
+        seriesListGeneral = new ArrayList();
 
         for (int i = 0;i < 50; i++) {
             series.add(i, 0);//canviar
-            seriesList.add(0.0);
+            seriesListAixeta1.add(0.0);
+            seriesListAixeta2.add(0.0);
+            seriesListDutxa.add(0.0);
+            seriesListGeneral.add(0.0);
         }
         dataset = new XYMultipleSeriesDataset();
         dataset.addSeries(series);
 // Now we create the renderer
         XYSeriesRenderer renderer = new XYSeriesRenderer();
         renderer.setLineWidth(2);
-        renderer.setColor(Color.RED);
+        renderer.setColor(Color.rgb(1,87,157));
         XYSeriesRenderer.FillOutsideLine a = new XYSeriesRenderer.FillOutsideLine(XYSeriesRenderer.FillOutsideLine.Type.BELOW);
 
 
-        a.setColor(Color.rgb(0,255,0));
+        a.setColor(Color.rgb(66,117,175));
 
 // Include low and max value
 
@@ -154,14 +164,28 @@ public class MainFragment extends Fragment implements CounterFragment.LiterCount
 
 
         double elem = mActivity.getConsumActual();
+        switch (mActivity.getSelected()) {
+            case Constants.AIXETA1:
+                seriesList = seriesListAixeta1;
+                break;
+            case Constants.AIXETA2:
+                seriesList = seriesListAixeta2;
+                break;
+            case Constants.DUTXA:
+                seriesList = seriesListDutxa;
+                break;
+            case Constants.GENERAL:
+                seriesList = seriesListGeneral;
+                break;
+        }
         seriesList.remove(0);
-        series = new XYSeries("Consum d'aigua");
+        series = new XYSeries("");
         for (int i = 0; i < seriesList.size(); i++) {
             series.add(i, seriesList.get(i));
 
         }
-        series.add(seriesList.size(),elem);
-        seriesList.add(elem);
+        series.add(seriesList.size(), elem);
+            seriesList.add(elem);
 
 
 
