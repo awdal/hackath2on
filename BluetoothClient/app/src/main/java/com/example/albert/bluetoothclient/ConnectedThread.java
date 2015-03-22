@@ -1,4 +1,4 @@
-package awdal.com.hackath2on;
+package com.example.albert.bluetoothclient;
 
 import android.bluetooth.BluetoothSocket;
 
@@ -13,13 +13,11 @@ public class ConnectedThread extends Thread {
     private final BluetoothSocket mmSocket;
     private final InputStream mmInStream;
     private final OutputStream mmOutStream;
-    private MyInterface inter;
 
-    public ConnectedThread(BluetoothSocket socket,MyInterface inter) {
+    public ConnectedThread(BluetoothSocket socket) {
         mmSocket = socket;
         InputStream tmpIn = null;
         OutputStream tmpOut = null;
-        this.inter = inter;
 
         // Get the input and output streams, using temp objects because
         // member streams are final
@@ -31,35 +29,23 @@ public class ConnectedThread extends Thread {
         mmInStream = tmpIn;
         mmOutStream = tmpOut;
     }
-
+/*
     public void run() {
         byte[] buffer = new byte[1024];  // buffer store for the stream
         int bytes; // bytes returned from read()
-        char c;
+
         // Keep listening to the InputStream until an exception occurs
         while (true) {
             try {
                 // Read from the InputStream
                 bytes = mmInStream.read(buffer);
                 // Send the obtained bytes to the UI activity
-               // mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer).sendToTarget();
-                // for each byte in the buffer
-                String str = new String();
-                for(int i = 0; i < bytes; i++)
-                {
-                    // convert byte to character
-                    c=(char)buffer[i];
-
-                    // prints character
-                    str += c;
-                }
-
-                inter.showMessageObtained(str);
+                //mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer)                        .sendToTarget();
             } catch (IOException e) {
                 break;
             }
         }
-    }
+    }*/
 
     /* Call this from the main activity to send data to the remote device */
     public void write(byte[] bytes) {
@@ -74,6 +60,4 @@ public class ConnectedThread extends Thread {
             mmSocket.close();
         } catch (IOException e) { }
     }
-
-
 }

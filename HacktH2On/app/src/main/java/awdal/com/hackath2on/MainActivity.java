@@ -98,14 +98,19 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
     }
 
     public float getConsumActual() {
+
         switch (selected){
             case Constants.AIXETA1:
+                Log.e("connectat","aixeta1="+aixeta1);
                 return aixeta1;
             case Constants.AIXETA2:
+                Log.e("connectat","aixeta2="+aixeta2);
                 return aixeta2;
             case Constants.DUTXA:
+                Log.e("connectat","dutxa="+dutxa);
                 return dutxa;
             case Constants.GENERAL:
+                Log.e("connectat","general="+general);
                 return general;
         }
         return -1;
@@ -249,6 +254,7 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
         Toast.makeText(getApplicationContext(),text, Toast.LENGTH_LONG).show();
     }
     public void showMessageObtained(String text){
+        Log.e("connectat","he rebut:"+text);
         if(text.charAt(0) == '/'){//valor actual consum
             //2 aixetes,1 dutxa i 1general en aquest ordre, per exemple: /10.3,99.0,55.2,45.4
             String []split = text.substring(1).split(",");
@@ -256,7 +262,7 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
             aixeta2 = Float.parseFloat(split[1]);
             dutxa  = Float.parseFloat(split[2]);
             general = Float.parseFloat(split[3]);
-            Log.e("connectat", text);
+
 
 
         }
