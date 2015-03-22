@@ -4,7 +4,8 @@
     <color name="half_black">#808080</color>
     <color name="white">#fafafa</color>
     <color name="white_pressed">#f1f1f1</color>
-    <color name="verd">#00695C</color>
+    <color name="verd">#8ACE7D</color>
+    <color name="selected">#00695C</color>
     <color name="blau">#01579B</color>
     <color name="ligth_green">#009688</color>
     <color name="blue_background">#E1F5FE</color>

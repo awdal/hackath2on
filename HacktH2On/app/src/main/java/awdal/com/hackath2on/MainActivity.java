@@ -81,29 +81,47 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
         aixeta2F = (FloatingActionButton) findViewById(R.id.aixeta2);
         dutxaF = (FloatingActionButton) findViewById(R.id.dutxa);
         generalF = (FloatingActionButton) findViewById(R.id.general);
-
+        final int selectedColor = getResources().getColor(R.color.selected);
+        final int defaultColor = getResources().getColor(R.color.verd);
         aixeta1F.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selected = Constants.AIXETA1;
+                aixeta1F.setColorNormal(selectedColor);
+                aixeta2F.setColorNormal(defaultColor);
+                dutxaF.setColorNormal(defaultColor);
+                generalF.setColorNormal(defaultColor);
             }
         });
         aixeta2F.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selected = Constants.AIXETA2;
+                aixeta2F.setColorNormal(selectedColor);
+                aixeta1F.setColorNormal(defaultColor);
+                dutxaF.setColorNormal(defaultColor);
+                generalF.setColorNormal(defaultColor);
             }
         });
         dutxaF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selected = Constants.DUTXA;
+                //v.setBackgroundColor(selectedColor);
+                dutxaF.setColorNormal(selectedColor);
+                aixeta1F.setColorNormal(defaultColor);
+                aixeta2F.setColorNormal(defaultColor);
+                generalF.setColorNormal(defaultColor);
             }
         });
         generalF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selected = Constants.GENERAL;
+                generalF.setColorNormal(selectedColor);
+                aixeta2F.setColorNormal(defaultColor);
+                dutxaF.setColorNormal(defaultColor);
+                aixeta1F.setColorNormal(defaultColor);
             }
         });
 

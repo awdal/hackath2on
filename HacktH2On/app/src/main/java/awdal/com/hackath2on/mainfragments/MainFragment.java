@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -103,6 +104,7 @@ public class MainFragment extends Fragment implements CounterFragment.LiterCount
 
 
     private void initChart(){
+
         series = new XYSeries("");
         seriesListAixeta1 = new ArrayList();
         seriesListAixeta2 = new ArrayList();
@@ -135,7 +137,17 @@ public class MainFragment extends Fragment implements CounterFragment.LiterCount
         renderer.setLineWidth(10f);
         renderer.addFillOutsideLine(a);
         renderer.setPointStrokeWidth(3);
+
         mRenderer = new XYMultipleSeriesRenderer();
+        int[]b = {0,0,-150,0};
+        int[] margins = mRenderer.getMargins();
+
+        b[0] = margins[0];
+        b[1] = margins[1];
+        b[3] = margins[3];
+
+        mRenderer.setMargins(b);
+
         mRenderer.addSeriesRenderer(renderer);
 // We want to avoid black border
         mRenderer.setMarginsColor(Color.argb(0x00, 0xff, 0x00, 0x00)); // transparent margins
@@ -143,6 +155,7 @@ public class MainFragment extends Fragment implements CounterFragment.LiterCount
         mRenderer.setPanEnabled(false, false);
         mRenderer.setYAxisMax(150);
         mRenderer.setYAxisMin(0);
+
         mRenderer.setShowGrid(true); // we show the grid
 
 

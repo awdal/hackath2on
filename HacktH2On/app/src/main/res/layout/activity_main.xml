@@ -16,7 +16,7 @@
         android:id="@+id/multiple_actions_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         fab:fab_addButtonColorNormal="@color/white"
         fab:fab_addButtonColorPressed="@color/white_pressed"
@@ -50,7 +50,8 @@
             fab:fab_colorPressed="@color/ligth_green"
             fab:fab_size="mini"
             fab:fab_icon="@drawable/kitchentap"
-            android:id="@+id/aixeta2"/>
+            android:id="@+id/aixeta2"
+            />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
