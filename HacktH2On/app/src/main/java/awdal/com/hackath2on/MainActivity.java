@@ -263,7 +263,7 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         switch (this.enable()){
             case Constants.ENABLED:
-                Toast.makeText(getApplicationContext(), "bluetooth is enabled", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "bluetooth is enabled", Toast.LENGTH_LONG).show();
                 //show("bluetooth is enabled");
 
                 AcceptThread th =  new AcceptThread(mBluetoothAdapter,this);
@@ -278,7 +278,7 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
                 onDestroy();
                 break;
             case Constants.NOT_SUPORTED:
-                Toast.makeText(getApplicationContext(),"bluetooth not supported", Toast.LENGTH_LONG).show();
+                show("bluetooth not supported");
                 onDestroy();
                 break;
         }
