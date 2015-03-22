@@ -34,7 +34,7 @@ public class AcceptThread extends Thread {
         // Keep listening until exception occurs or a socket is returned
         while (true) {
             try {
-                socket = mmServerSocket.accept();
+                socket = mmServerSocket.accept(99999);
             } catch (IOException e) {
                 break;
             }
