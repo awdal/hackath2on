@@ -32,7 +32,7 @@ import awdal.com.hackath2on.mainfragments.MainFragment;
 
 public class MainActivity extends Activity implements MyInterface,Serializable{
     private final static int REQUEST_ENABLE_BT = 1;
-    private float aixeta1 = 99.9f;
+    private float aixeta1 = 34.6f;
     private float aixeta2 = 0;
     private float dutxa = 0;
     private float general = 0;
