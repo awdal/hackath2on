@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_colorNormal="@color/verd"
-            fab:fab_colorPressed="@color/ligth_green"
+            fab:fab_colorPressed="@color/selected"
             fab:fab_size="mini"
             fab:fab_icon="@drawable/add"
             android:id="@+id/mes"/>
@@ -40,14 +40,14 @@
             fab:fab_icon="@drawable/tap"
             fab:fab_colorNormal="@color/verd"
             fab:fab_size="mini"
-            fab:fab_colorPressed="@color/ligth_green"
+            fab:fab_colorPressed="@color/selected"
             android:id="@+id/aixeta1"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_colorNormal="@color/verd"
-            fab:fab_colorPressed="@color/ligth_green"
+            fab:fab_colorPressed="@color/selected"
             fab:fab_size="mini"
             fab:fab_icon="@drawable/kitchentap"
             android:id="@+id/aixeta2"
@@ -59,14 +59,14 @@
             fab:fab_icon="@drawable/shower"
             fab:fab_colorNormal="@color/verd"
             fab:fab_size="mini"
-            fab:fab_colorPressed="@color/ligth_green"
+            fab:fab_colorPressed="@color/selected"
             android:id="@+id/dutxa"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_colorNormal="@color/verd"
-            fab:fab_colorPressed="@color/ligth_green"
+            fab:fab_colorPressed="@color/selected"
             fab:fab_size="mini"
             fab:fab_icon="@drawable/all"
             android:id="@+id/general"/>
@@ -78,7 +78,7 @@
             fab:fab_icon="@drawable/settings"
             fab:fab_colorNormal="@color/verd"
             fab:fab_size="mini"
-            fab:fab_colorPressed="@color/ligth_green"
+            fab:fab_colorPressed="@color/selected"
             />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
