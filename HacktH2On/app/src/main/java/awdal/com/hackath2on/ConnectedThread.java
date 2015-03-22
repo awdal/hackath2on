@@ -1,6 +1,7 @@
 package awdal.com.hackath2on;
 
 import android.bluetooth.BluetoothSocket;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,14 +34,14 @@ public class ConnectedThread extends Thread {
     }
 
     public void run() {
-        byte[] buffer = new byte[1024];  // buffer store for the stream
+        byte[] buffer = new byte[20];  // buffer store for the stream
         int bytes; // bytes returned from read()
         char c;
         // Keep listening to the InputStream until an exception occurs
         while (true) {
             try {
                 // Read from the InputStream
-                bytes = mmInStream.read(buffer);
+                bytes = mmInStream.read(buffer, 0, 20);
                 // Send the obtained bytes to the UI activity
                // mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer).sendToTarget();
                 // for each byte in the buffer
@@ -56,7 +57,7 @@ public class ConnectedThread extends Thread {
 
                 inter.showMessageObtained(str);
             } catch (IOException e) {
-                break;
+                Log.e("connect", e.getMessage());
             }
         }
     }

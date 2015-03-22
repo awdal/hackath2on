@@ -36,8 +36,9 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
     private float aixeta2 = 0;
     private float dutxa = 0;
     private float general = 0;
-    private int selected = 0;
+    private int selected = 3;
     private BluetoothAdapter mBluetoothAdapter;
+    private MainFragment m;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -122,19 +123,20 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-        MainFragment m = MainFragment.newInstance();
 
 
 
-        Fragment[] fragments = new Fragment[] {
-                //SocialFragment.newInstance(),
-                m,
-                AutomatismFragment.newInstance()
-        };
+
+        Fragment[] fragments = new Fragment[2];
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+
+            m = MainFragment.newInstance();
             m.setMainActivity(MainActivity.this);
+
+            fragments[0] = m;
+            fragments[1] = AutomatismFragment.newInstance();
         }
 
         @Override
@@ -263,7 +265,19 @@ public class MainActivity extends Activity implements MyInterface,Serializable{
             dutxa  = Float.parseFloat(split[2]);
             general = Float.parseFloat(split[3]);
 
+            /*Log.i("connectat::aixeta1",aixeta1+"");
+            Log.i("connectat::aixeta2",aixeta2+"");
+            Log.i("connectat::dutxa",dutxa+"");
+            Log.i("connectat::general",general+"");*/
 
+            if(m != null){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        m.updateView();
+                    }
+                });
+            }
 
         }
 
