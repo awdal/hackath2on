@@ -1,1 +1,3 @@
-Aquesta applicaciÛ consisteix en un servidor i un client, el client Ès l'aplicaciÛ que simula els aparells d'aigua de casa que es comuniquen per Bluetooth amb el servidor mÚbil. La MAC del servidor est‡ escrita manualment al codi per tant, no funcionar‡ en cap altre mÚbil a menys que es modifiqui aquesta lÌnia.
+https://vimeo.com/123029947
+
+Aquesta applicaci√≥ consisteix en un servidor i un client, el client √©s l'aplicaci√≥ que simula els aparells d'aigua de casa que es comuniquen per Bluetooth amb el servidor m√≤bil. La MAC del servidor est√† escrita manualment al codi per tant, no funcionar√† en cap altre m√≤bil a menys que es modifiqui aquesta l√≠nia.
