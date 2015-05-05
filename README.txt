@@ -1,3 +1,5 @@
-https://vimeo.com/123029947
+Description:
+This app consist of a server and a client, the client is an app that simulates our home water sensors. It communicates by Bluetooth with the mobile server, our Watometer app.
 
-Aquesta applicació consisteix en un servidor i un client, el client és l'aplicació que simula els aparells d'aigua de casa que es comuniquen per Bluetooth amb el servidor mòbil.
+Presentation video:
+https://vimeo.com/123029947
